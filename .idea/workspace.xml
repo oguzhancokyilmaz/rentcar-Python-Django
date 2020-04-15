@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98dc9ef6-9a34-4969-853d-96ef0b7dfb44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/static/img/flag.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,12 +83,24 @@
       <updated>1586639626449</updated>
       <workItem from="1586639631288" duration="2001000" />
       <workItem from="1586642800654" duration="6839000" />
-      <workItem from="1586974045467" duration="10491000" />
+      <workItem from="1586974045467" duration="11155000" />
     </task>
+    <task id="LOCAL-00001" summary="deneme">
+      <created>1586986370525</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586986370525</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="deneme" />
+    <option name="LAST_COMMIT_MESSAGE" value="deneme" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="25" key="#Notifications" timestamp="1586640833348">
@@ -103,17 +115,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="454" y="174" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1586646683763" />
+    <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1586986369864">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1586986369864" />
     <state x="186" y="9" key="SettingsEditor" timestamp="1586642832315">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586642832315" />
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1586986463914">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1586986463914" />
     <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1586974056707">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1586974056707" />
-    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586986329000">
+    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586987038454">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1586986329000" />
+    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1586987038454" />
   </component>
 </project>
