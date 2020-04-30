@@ -28,6 +28,11 @@ def referanslar(request):
     context = {'setting': setting,'page':'referanslar'}
     return render(request, 'referanslarimiz.html', context)
 
+def slider(request):
+    setting = Setting.objects.get(pk=1)
+    context = {'setting': setting,'page':'slider'}
+    return render(request, 'slider.html', context)
+
 def iletisim(request):
 
     if request.method =='POST':

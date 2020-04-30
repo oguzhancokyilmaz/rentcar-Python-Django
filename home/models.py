@@ -2,6 +2,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 
 from django.forms import ModelForm, TextInput, Textarea
+from django.utils.safestring import mark_safe
 
 
 class Setting(models.Model):
@@ -28,11 +29,17 @@ class Setting(models.Model):
     aboutus = RichTextUploadingField(blank=True)
     contact = RichTextUploadingField(blank=True)
     references = RichTextUploadingField()
+    slider1 = models.ImageField(blank=True,upload_to="images/")
+    slider2 = models.ImageField(blank=True, upload_to="images/")
+    slider3 = models.ImageField(blank=True, upload_to="images/")
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.title
+    def image_tag(self):
+        return mark_safe('<img src="{}"/>'.format(self.image.url))
+    image_tag.short_description = "Image"
 
 class ContactFormMessage(models.Model):
     STATUS = (
