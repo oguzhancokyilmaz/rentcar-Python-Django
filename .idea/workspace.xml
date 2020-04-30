@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98dc9ef6-9a34-4969-853d-96ef0b7dfb44" name="Default Changelist" comment="İletişim formu eklendi-çalışıyor">
+    <list default="true" id="98dc9ef6-9a34-4969-853d-96ef0b7dfb44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/iletisim.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/iletisim.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/slider.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/slider.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +88,7 @@
       <workItem from="1587320505175" duration="3692000" />
       <workItem from="1587760432825" duration="271000" />
       <workItem from="1587927167828" duration="122000" />
-      <workItem from="1588273161637" duration="9646000" />
+      <workItem from="1588273161637" duration="11925000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1586986370525</created>
@@ -123,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588278361689</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Slider kontrolü sağlandı - Slider'ı settingsden aldım.">
+      <created>1588286314668</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588286314668</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,7 +136,8 @@
     <MESSAGE value="Dil seçenekleri değişti" />
     <MESSAGE value="Hakkımızda-iletişim-referans sayfaları eklendi" />
     <MESSAGE value="İletişim formu eklendi-çalışıyor" />
-    <option name="LAST_COMMIT_MESSAGE" value="İletişim formu eklendi-çalışıyor" />
+    <MESSAGE value="Slider kontrolü sağlandı - Slider'ı settingsden aldım." />
+    <option name="LAST_COMMIT_MESSAGE" value="Slider kontrolü sağlandı - Slider'ı settingsden aldım." />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="25" key="#Notifications" timestamp="1586640833348">
@@ -153,29 +156,29 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="114" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587243091091" />
-    <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1588278375126">
+    <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1588286312891">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587246623138" />
-    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588278375126" />
+    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588286312891" />
     <state x="186" y="9" key="SettingsEditor" timestamp="1587760576741">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587760576741" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1588278395479">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1588286333859">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587246642188" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588278395479" />
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588286333859" />
     <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1587927267269">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587320505273" />
     <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587927267269" />
-    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588278378397">
+    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588286319008">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587246593039" />
-    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1588278378397" />
+    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1588286319008" />
   </component>
 </project>
