@@ -9,7 +9,7 @@ class CarImageInline(admin.TabularInline):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'status']
-    list_filter = ["status"]
+    list_filter = ["status","parent"]
     readonly_fields = ('image_tag',)
 
 class CarsAdmin(admin.ModelAdmin):
