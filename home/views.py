@@ -6,17 +6,17 @@ from django.shortcuts import render
 from home.models import Setting, ContactFormMessage, ContactFormu
 from django.contrib import messages
 
-
-def index(request):
-    setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page': 'home'}
-    return render(request, 'index.html', context)
+from product.models import Category
 
 
 def index(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page': 'home'}
+    category = Category.objects.all()
+    context = {'setting': setting,
+               'category': category,
+               'page': 'home'}
     return render(request, 'index.html', context)
+
 
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)

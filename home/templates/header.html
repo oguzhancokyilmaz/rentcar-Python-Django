@@ -45,8 +45,32 @@
                                         <span>ARAÇLAR</span>
                                     </h2>
                                 </div>
-                                <div id="cate-toggle" class="category-menu-list">
+
+                                 <div id="cate-toggle" class="category-menu-list">
                                     <ul>
+                                     {% load mptt_tags %}
+
+                                        {% recursetree category %}
+                                           <li class="right-menu"><a href="/category/{{ node.slug }}">{{ node.title }}</a>
+                                            <ul class="cat-mega-menu">
+                                                {% if not node.is_leaf_node %}
+                                                    <ul class="children">
+                                                    <li class="right-menu cat-mega-title">
+                                                    <a href="#">{{ children }}</a>
+                                                                             </li>
+                                                    </ul>
+                                                {% endif %}
+                                            </ul>
+                                            </li>
+                                        {% endrecursetree %}
+
+
+
+
+
+
+
+
                                         <li class="right-menu"><a href="#">EKONOMİK ARAÇLAR</a>
                                             <ul class="cat-mega-menu">
                                                 <li class="right-menu cat-mega-title">
@@ -109,37 +133,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="right-menu"><a href="#">ÜST SINIF ARAÇLAR</a>
-                                            <ul class="cat-mega-menu">
-                                                <li class="right-menu cat-mega-title">
-                                                    <a href="#">MERCEDES</a>
-                                                    <ul>
-                                                        <li><a href="#">Aluminum Nonstick</a></li>
-                                                        <li><a href="#">Calphalon</a></li>
-                                                        <li><a href="#">Contemporary</a></li>
-                                                        <li><a href="#">Hard-Anodized</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="right-menu cat-mega-title">
-                                                    <a href="#">BMW</a>
-                                                    <ul>
-                                                        <li><a href="#">Sanai laptops</a></li>
-                                                        <li><a href="#">Byteflight</a></li>
-                                                        <li><a href="#">EXcaliberPC</a></li>
-                                                        <li><a href="#">Gaming Laptops</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="right-menu cat-mega-title">
-                                                    <a href="#">FORD</a>
-                                                    <ul>
-                                                        <li><a href="#">Dual Core</a></li>
-                                                        <li><a href="#">Gaming Monitors</a></li>
-                                                        <li><a href="#">GPS Monitors</a></li>
-                                                        <li><a href="#">Heat Shield</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
+
                                         <li class="right-menu"><a href="#">SUV ARAÇLAR</a>
                                             <ul class="cat-mega-menu">
                                                 <li class="right-menu cat-mega-title">
