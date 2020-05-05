@@ -1,0 +1,91 @@
+{% extends "homebase.html" %}
+ {% load static %}
+
+{% block title %} {{ categorydata.title }} Arabalar {% endblock %}
+{% block keywords %} {{ categorydata.keywords }} {% endblock %}
+{% block description %} {{ categorydata.description }} {% endblock %}
+
+{% block head %} <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+
+ <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>ARABALAR</h2>
+                        <div class="bt-option">
+                            <a href="./home.html">ANASAYFA</a>
+                            <span>{{ categorydata.title }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+
+
+
+
+    <!-- Rooms Section Begin -->
+    <section class="rooms-section spad">
+        <div class="container">
+            <div class="row">
+                {% for rs in cars %}
+
+
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="room-item">
+                        <img src="{{rs.image.url}}" alt="">
+                        <div class="ri-text">
+                            <h4>{{rs.title}}</h4>
+                            <h3>{{rs.price}}$<span>/GÜN</span></h3>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">KALAN:</td>
+                                        <td>{{rs.amount}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">KAPASİTE:</td>
+                                        <td>Maximum 5 Kişi</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">YAKIT:</td>
+                                        <td>Benzin</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">TİP:</td>
+                                        <td>Otomatik Vites</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="/product/{{ rs.id }}/{{ rs.slug }}" class="primary-btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="col-lg-12">
+                    <div class="room-pagination">
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Rooms Section End -->
+
+
+
+
+
+{% endblock %}

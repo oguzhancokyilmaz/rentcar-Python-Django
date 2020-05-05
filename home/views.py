@@ -6,7 +6,7 @@ from django.shortcuts import render
 from home.models import Setting, ContactFormMessage, ContactFormu
 from django.contrib import messages
 
-from product.models import Category
+from product.models import Category, Cars
 
 
 def index(request):
@@ -19,13 +19,16 @@ def index(request):
 
 
 def hakkimizda(request):
+
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting,'page':'hakkimizda'}
+    category = Category.objects.all()
+    context = {'setting': setting,'page':'hakkimizda','category': category}
     return render(request, 'hakkimizda.html', context)
 
 def referanslar(request):
+    category = Category.objects.all()
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting,'page':'referanslar'}
+    context = {'setting': setting,'page':'referanslar','category':category}
     return render(request, 'referanslarimiz.html', context)
 
 def slider(request):
@@ -49,6 +52,21 @@ def iletisim(request):
             return HttpResponseRedirect('/iletisim')
 
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
     form = ContactFormu()
-    context = {'setting': setting,'form':form}
+    context = {'setting': setting,'form':form,'category':category}
     return render(request, 'iletisim.html', context)
+
+
+def category_cars(request,id,slug):
+
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+    products = Cars.objects.filter(category_id=id)
+    context = {'cars': products,
+               'categorydata':categorydata,
+               'category': category}
+    return render(request,'arabalar.html',context)
+
+
+

@@ -50,7 +50,7 @@ class Cars(models.Model):
     title = models.CharField(max_length=30)
     keywords = models.CharField(blank=True,max_length=255)
     description = models.CharField(blank=True,max_length=255)
-    slug = models.SlugField(blank=True,max_length=255)
+    slug = models.SlugField()
     image = models.ImageField(blank=True,upload_to="images/")
     price = models.FloatField()
     amount = models.IntegerField()
