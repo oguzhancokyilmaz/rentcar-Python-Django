@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98dc9ef6-9a34-4969-853d-96ef0b7dfb44" name="Default Changelist" comment="Category Tree oluşturuldu">
-      <change afterPath="$PROJECT_DIR$/home/templates/arabalar.html" afterDir="false" />
+    <list default="true" id="98dc9ef6-9a34-4969-853d-96ef0b7dfb44" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/home/templates/car_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/arabalar.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/arabalar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/content.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/homebase.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/homebase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/slider.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/slider.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rentcar/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rentcar/urls.py" afterDir="false" />
@@ -100,7 +104,8 @@
       <workItem from="1588528918824" duration="16537000" />
       <workItem from="1588615000159" duration="2549000" />
       <workItem from="1588626975542" duration="6895000" />
-      <workItem from="1588710056786" duration="6689000" />
+      <workItem from="1588710056786" duration="6813000" />
+      <workItem from="1588768230298" duration="16730000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1586986370525</created>
@@ -172,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588553962926</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="KATEGORİ ÜRÜNLERİ SLUG+İD GÖSTERİLİYOR">
+      <created>1588721797681</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1588721797681</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +201,8 @@
     <MESSAGE value="Category Tree oluşturuluyor" />
     <MESSAGE value="Category Tree uygun olsun diye 2 farklı template birleştirdim ve araçlar şeklinde header'a sidebar oturttum." />
     <MESSAGE value="Category Tree oluşturuldu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Category Tree oluşturuldu" />
+    <MESSAGE value="KATEGORİ ÜRÜNLERİ SLUG+İD GÖSTERİLİYOR" />
+    <option name="LAST_COMMIT_MESSAGE" value="KATEGORİ ÜRÜNLERİ SLUG+İD GÖSTERİLİYOR" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="25" key="#Notifications" timestamp="1586640833348">
@@ -208,11 +221,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="114" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587243091091" />
-    <state x="456" y="2" width="724" height="700" key="CommitChangelistDialog2" timestamp="1588554023045">
+    <state x="456" y="2" width="724" height="700" key="CommitChangelistDialog2" timestamp="1588721796410">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587246623138" />
-    <state x="456" y="2" width="724" height="700" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588554023045" />
+    <state x="456" y="2" width="724" height="700" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588721796410" />
     <state x="395" y="81" key="MultipleFileMergeDialog" timestamp="1588554003277">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -221,20 +234,20 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1588361236910" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1588554038168">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1588721819449">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587246642188" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588554038168" />
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1588710060739">
+    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588721819449" />
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1588768275886">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587320505273" />
-    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588710060739" />
-    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588554025410">
+    <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588768275886" />
+    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588721804149">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1587246593039" />
-    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1588554025410" />
+    <state x="494" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1588721804149" />
   </component>
 </project>

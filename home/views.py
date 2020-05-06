@@ -6,14 +6,16 @@ from django.shortcuts import render
 from home.models import Setting, ContactFormMessage, ContactFormu
 from django.contrib import messages
 
-from product.models import Category, Cars
+from product.models import Category, Cars, Images
 
 
 def index(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
+    lastproducts = Cars.objects.all().order_by('?')[:4]
     context = {'setting': setting,
                'category': category,
+               'lastproducts': lastproducts,
                'page': 'home'}
     return render(request, 'index.html', context)
 
@@ -69,4 +71,12 @@ def category_cars(request,id,slug):
     return render(request,'arabalar.html',context)
 
 
+def car_detail (request,id,slug):
+    category = Category.objects.all()
+    car = Cars.objects.get(pk=id)
+    images = Images.objects.filter(car_id=id)
+    context = {'car': car,
+               'images': images,
+               'category': category}
+    return render(request,'car_detail.html',context)
 
