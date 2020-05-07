@@ -1,12 +1,14 @@
+
 from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+from home.forms import SearchForm
 from home.models import Setting, ContactFormMessage, ContactFormu
 from django.contrib import messages
 
-from product.models import Category, Cars, Images
+from product.models import Category, Cars, Images, Comment
 
 
 def index(request):
@@ -75,8 +77,24 @@ def car_detail (request,id,slug):
     category = Category.objects.all()
     car = Cars.objects.get(pk=id)
     images = Images.objects.filter(car_id=id)
+    comments = Comment.objects.filter(product_id=id,status='True')
     context = {'car': car,
                'images': images,
-               'category': category}
+               'category': category,
+               'comments': comments}
     return render(request,'car_detail.html',context)
 
+def product_search(request):
+    if request.method =='POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            category = Category.objects.all()
+            query = form.cleaned_data['query'] #formdan bilgiyi al
+            products = Cars.objects.filter(title__icontains=query) #arabalardan titleında query olanları al
+            context = {'products':products,
+                       'category':category,
+                       'query':query
+                       }
+            return render(request,'products_search.html',context)
+
+    return HttpResponseRedirect('/')

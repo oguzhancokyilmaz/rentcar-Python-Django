@@ -6,15 +6,49 @@
 {% block description %} {{ car.description }} {% endblock %}
 
 {% block head %} <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+
+
+    <style>
+        .star{
+          color: goldenrod;
+          font-size: 2.0rem;
+          padding: 0 1rem; /* space out the stars */
+        }
+        .star::before{
+          content: '\2606';    /* star outline */
+          cursor: pointer;
+        }
+        .star.rated::before{
+          /* the style for a selected star */
+          content: '\2605';  /* filled star */
+        }
+
+        .stars{
+            counter-reset: rateme 0;
+            font-size: 2.0rem;
+            font-weight: 900;
+        }
+        .star.rated{
+            counter-increment: rateme 1;
+        }
+        .stars::after{
+            content: counter(rateme) '/5';
+        }
+    </style>
+
+
+
+
+
 {% endblock %}
 
 
 {% block content %}
 
 <!-- Begin Uren's Breadcrumb Area -->
-        <div class="breadcrumb-area">
+        <div class="breadcrumb-area"  style="background-image: url({% static 'img/1.jpg'%});">
             <div class="container">
-                <div class="breadcrumb-content">
+                <div class="breadcrumb-content" >
                     <h2>{{car.title}}</h2>
                     <ul>
                         <li><a href="/category/{{ car.category_id }}/{{ car.category.slug }}">{{ car.category }}</a></li>
@@ -176,74 +210,157 @@
                                     <div class="product-description">
                                         <ul>
                                             <li>
-                                                <strong>{{ car.title }}</strong>
+                                                <strong>{{car.title}}</strong>
                                                 <span>{{ car.detail | safe }}</span>
                                             </li>
-
-
                                         </ul>
                                     </div>
                                 </div>
-
+                                <div id="specification" class="tab-pane" role="tabpanel">
+                                    <table class="table table-bordered specification-inner_stuff">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2"><strong>Memory</strong></td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td>test 1</td>
+                                                <td>8gb</td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2"><strong>Processor</strong></td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td>No. of Cores</td>
+                                                <td>1</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div id="reviews" class="tab-pane" role="tabpanel">
                                     <div class="tab-pane active" id="tab-review">
-                                        <form class="form-horizontal" id="form-review">
+                                        <form class="form-horizontal" id="form-review" action="/product/addcomment/{{ car.id }}" method="post">
+                                            {% csrf_token %}
+
+
+
+                                            {% for rs in comments %}
+
                                             <div id="review">
+
+
                                                 <table class="table table-striped table-bordered">
+
                                                     <tbody>
+
                                                         <tr>
-                                                            <td style="width: 50%;"><strong>Customer</strong></td>
-                                                            <td class="text-right">15/09/20</td>
+                                                            <td style="width: 50%;"><strong>{{rs.user.first_name}}</strong></td>
+                                                            <td class="text-right">{{rs.create_at}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2">
-                                                                <p>Good product! Thank you very much</p>
+                                                                <h4>{{ rs.subject }}</h4>
+                                                                <p>{{rs.comment}}</p>
                                                                 <div class="rating-box">
                                                                     <ul>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                        <li><i class="ion-android-star"></i></li>
-                                                                        <li><i class="ion-android-star"></i></li>
+
+                                                                        <li><i {% if rs.rate >= 1 %} class="ion-android-star" {% endif %}></i></li>
+                                                                        <li><i {% if rs.rate >= 2 %} class="ion-android-star" {% endif %}></i></li>
+                                                                        <li><i {% if rs.rate >= 3 %} class="ion-android-star" {% endif %}></i></li>
+                                                                        <li><i {% if rs.rate >= 4 %} class="ion-android-star" {% endif %}></i></li>
+                                                                        <li><i {% if rs.rate == 5 %}  class="ion-android-star"{% endif %}></i></li>
                                                                     </ul>
                                                                 </div>
                                                             </td>
                                                         </tr>
+
                                                     </tbody>
+
                                                 </table>
+
                                             </div>
+
+                                            {% endfor %}
+
                                             <h2>Write a review</h2>
+                                                      {% if messages %}
+                                       {% for message in messages %}
+                                           <div class="alert alert-{{ message.tags }}" role="alert"> {{ message }} </div>
+                                       {% endfor %}
+                                    {% endif %}
                                             <div class="form-group required">
                                                 <div class="col-sm-12 p-0">
-                                                    <label>Your Email <span class="required">*</span></label>
-                                                    <input class="review-input" type="email" name="con_email" id="con_email" required>
+                                                    <label>Subject <span class="required">*</span></label>
+                                                    <input class="review-input" type="text" name="subject" id="id_subject" required>
                                                 </div>
                                             </div>
                                             <div class="form-group required second-child">
                                                 <div class="col-sm-12 p-0">
-                                                    <label class="control-label">Share your opinion</label>
-                                                    <textarea class="review-textarea" name="con_message" id="con_message"></textarea>
-                                                    <div class="help-block"><span class="text-danger">Note:</span> HTML is not
-                                                        translated!</div>
+                                                    <label class="control-label">Yorumunuz</label>
+                                                    <textarea class="review-textarea" name="comment" id="id_comment"></textarea>
+
                                                 </div>
                                             </div>
                                             <div class="form-group last-child required">
-                                                <div class="col-sm-12 p-0">
-                                                    <div class="your-opinion">
-                                                        <label>Your Rating</label>
-                                                        <span>
-                                                    <select class="star-rating">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                    </select>
-                                                </span>
-                                                    </div>
-                                                </div>
+                                               <!-- alternate codepen version https://codepen.io/mad-d/pen/aJMPWr?editors=0010 -->
+    <h2>Puanınız:</h2>
+    <div class="stars" data-rating="3">
+
+        <input type="radio" class="star" name="rate" id="star1" value="1"/><label for="star1"></label>
+        <input type="radio" class="star" name="rate" id="star2" value="2"/><label for="star2"></label>
+        <input type="radio" class="star" name="rate" id="star3" value="3"/><label for="star3"></label>
+        <input type="radio" class="star" name="rate" id="star4" value="4"/><label for="star4"></label>
+        <input type="radio" class="star" name="rate" id="star5" value="5"/><label for="star5"></label>
+    </div>
+
+
+
+    <script>
+
+        //initial setup
+        document.addEventListener('DOMContentLoaded', function(){
+            let stars = document.querySelectorAll('.star');
+            stars.forEach(function(star){
+                star.addEventListener('click', setRating);
+            });
+
+            let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+            let target = stars[rating - 1];
+            target.dispatchEvent(new MouseEvent('click'));
+        });
+
+        function setRating(ev){
+            let span = ev.currentTarget;
+            let stars = document.querySelectorAll('.star');
+            let match = false;
+            let num = 0;
+            stars.forEach(function(star, index){
+                if(match){
+                    star.classList.remove('rated');
+                }else{
+                    star.classList.add('rated');
+                }
+                //are we currently looking at the span that was clicked
+                if(star === span){
+                    match = true;
+                    num = index + 1;
+                }
+            });
+            document.querySelector('.stars').setAttribute('data-rating', num);
+        }
+
+    </script>
                                                 <div class="uren-btn-ps_right">
-                                                    <button class="uren-btn-2">Continue</button>
+                                                    {% if user.id is not None %}
+                                                    <button class="uren-btn-2">Yorum Yap</button>
+                                                     {% else %}
+                                                            Yorum yapmak için <a href="/login"> Login </a>olunuz!
+                                                        {% endif %}
                                                 </div>
                                             </div>
                                         </form>
@@ -256,6 +373,13 @@
             </div>
         </div>
         <!-- Uren's Single Product Tab Area End Here -->
+
+
+
+
+
+
+
 
 
 

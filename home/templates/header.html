@@ -1,6 +1,8 @@
 
  {% load static %}
 
+
+
 <!-- Header Section Begin -->
     <header class="header-section">
         <div class="top-nav">
@@ -92,5 +94,18 @@
                 </div>
             </div>
         </div>
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form action="/search/" class="search-model-form" method="post">
+                {% csrf_token %}
+                <input type="text" name="query" placeholder="Aracınızı Bulun.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
     </header>
     <!-- Header End -->
