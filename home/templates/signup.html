@@ -1,0 +1,78 @@
+{% extends "homebase.html" %}
+ {% load static %}
+
+{% block title %} Giriş Yap-{{ setting.company }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %} <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="breadcrumb-area" style="background-image: url({% static 'img/1.jpg'%});">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Giriş Yap & Kayıt Ol</h2>
+                    <ul>
+                        <li><a href="/">ANASAYFA</a></li>
+                        <li class="active">Giriş Yap & Kayıt Ol</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <!-- Begin Uren's Login Register Area -->
+        <div class="uren-login-register_area" style="padding-left: 30%">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="" style="">
+
+                           {% if messages %}
+                                       {% for message in messages %}
+                                           <div class="alert alert-{{ message.tags }}" role="alert"> {{ message }} </div>
+                                       {% endfor %}
+                                    {% endif %}
+
+
+
+
+                        <!-- Login Form s-->
+                        <form action="" method="post">
+                          {% csrf_token %}
+                            <div class="login-form" >
+
+                                <h4 class="login-title">KAYIT OL</h4>
+
+
+                                  {% for field in form %}
+                                    <p>
+                                       <br> {{ field.label_tag }}
+                                        {{ field }}
+                                     {% if field.help_text %}
+                                            <small style="color: grey">{{ field.help_text }}</small>
+                                        {% endif %}
+                                        {% for error in field.errors %}
+                                            <p style="color: red">{{ error }}</p>
+                                        {% endfor %}
+
+                                    </p>
+
+                                {% endfor %}
+                                 <hr>  <button class="uren-register_btn" type="submit">KAYIT OL</button>
+
+
+
+
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Login Register Area  End Here -->
+
+{% endblock %}

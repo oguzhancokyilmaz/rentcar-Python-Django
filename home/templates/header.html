@@ -85,8 +85,24 @@
                                     <li class="active"><a href="/">Anasayfa</a></li>
                                     <li><a href="/hakkimizda">Hakkımızda</a></li>
                                     <li><a href="/referanslar">Referanslar</a></li>
-
                                     <li><a href="/iletisim">İletişim</a></li>
+                                    <li><a href="" class="fa fa-user"> {% if user.id is not None %}{{ user.first_name }}{% endif %}</a>
+                                    <ul class="dropdown">
+
+                                        {% if user.id is not None %}
+
+
+                                        <li><a href="#">Hesabım</a></li>
+                                        <li><a href="#">Sepetim</a></li>
+                                        <li><a href="/logout/">Çıkış Yap</a></li>
+                                         {% else %}
+                                        <li><a href="/login/">Giriş Yap</a></li>
+                                        <li><a href="/signup/">Kayıt Ol</a></li>
+
+                                        {% endif %}
+
+                                    </ul>
+                                    </li>
                                     <!--<li><a href="./contact.html">Contact</a></li> -->
                                 </ul>
                             </nav>
