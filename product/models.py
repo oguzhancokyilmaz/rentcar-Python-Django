@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 from django.forms import ModelForm
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from ckeditor_uploader.fields import  RichTextUploadingField
 from mptt.models import MPTTModel
@@ -20,7 +21,7 @@ class Category(MPTTModel):
     description = models.CharField(blank=True,max_length=255)
     image = models.ImageField(blank=True,upload_to="images/")
     status = models.CharField(blank=True,max_length=10,choices=STATUS)
-    slug = models.SlugField()
+    slug = models.SlugField(null=False,unique=True)
     parent = TreeForeignKey("self",blank=True,null=True,related_name="children",on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -42,6 +43,9 @@ class Category(MPTTModel):
        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_description = "Image"
 
+    def get_absolute_url(self): #slug otomatik kodu
+        return reverse('category_detail',kwargs={'slug':self.slug})
+
 
 class Cars(models.Model):
     STATUS = (
@@ -52,7 +56,7 @@ class Cars(models.Model):
     title = models.CharField(max_length=30)
     keywords = models.CharField(blank=True,max_length=255)
     description = models.CharField(blank=True,max_length=255)
-    slug = models.SlugField()
+    slug = models.SlugField(null=False,unique=True)
     image = models.ImageField(blank=True,upload_to="images/")
     price = models.FloatField()
     amount = models.IntegerField()
@@ -65,6 +69,9 @@ class Cars(models.Model):
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_description = "Image"
+
+    def get_absolute_url(self):  # slug otomatik kodu
+        return reverse('car_detail', kwargs={'slug': self.slug})
 
 
 

@@ -37,6 +37,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
         <div class="menu-item">
             <div class="container">
                 <div class="row">
@@ -95,13 +99,20 @@
             </div>
         </div>
 
+
+
+
+
+
+
+
     <!-- Search model Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch"><i class="icon_close"></i></div>
             <form action="/search/" class="search-model-form" method="post">
                 {% csrf_token %}
-                <input type="text" name="query" placeholder="Aracınızı Bulun.....">
+                <input type="text" id="query" name="query" placeholder="Aracınızı Bulun.....">
             </form>
         </div>
     </div>

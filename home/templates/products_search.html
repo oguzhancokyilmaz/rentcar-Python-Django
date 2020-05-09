@@ -17,7 +17,7 @@
                 <div class="breadcrumb-content" >
                     <h2>{{query.title}}</h2>
                     <ul>
-                        <li><a href="/home"> ANASAYFA </a></li>
+                        <li><a href="/"> ANASAYFA </a></li>
                         <li class="active">{{query.title}}</li>
                     </ul>
                 </div>
@@ -31,7 +31,7 @@
 
                 <div class="row">
 
-                    <table cellpadding="3" width="1200">
+                    <table cellpadding="3" width="1200" style="padding-top: 15px">
 
                         <tr>
                             <th>RESİM</th>
@@ -42,8 +42,8 @@
 
                         {% for rs in products %}
 
-                            <tr>
-                                <td> <a href="/product/{{ rs.id }}/{{ rs.slug }}"><img src="{{ rs.image.url }}" style="width: 400px;height: 400px" > </a>  </td>
+                            <tr style="padding-top: 20px;">
+                                <td> <a href="/product/{{ rs.id }}/{{ rs.slug }}"><img src="{{ rs.image.url }}" style="width: 500px;height: 400px" > </a>  </td>
                                 <td> <h4 class="product-name"> <a href="/product/{{ rs.id }}/{{ rs.slug }}">{{rs.title}} </a> </h4> </td>
                                 <td> <a href="/category/{{ rs.category.id }}/{{ rs.category.slug }}">{{rs.category}} </a>  </td>
                                 <td> <h4>${{ rs.price }}</h4>  </td>

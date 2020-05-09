@@ -1,7 +1,9 @@
+import json
 
 from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+
 
 # Create your views here.
 from home.forms import SearchForm
@@ -15,9 +17,11 @@ def index(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     lastproducts = Cars.objects.all().order_by('?')[:4]
+    comments = Comment.objects.filter(status='True').order_by('?')
     context = {'setting': setting,
                'category': category,
                'lastproducts': lastproducts,
+               'comments': comments ,
                'page': 'home'}
     return render(request, 'index.html', context)
 
@@ -98,3 +102,18 @@ def product_search(request):
             return render(request,'products_search.html',context)
 
     return HttpResponseRedirect('/')
+
+def product_search_auto(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        product = Cars.objects.filter(title__icontains=q)
+        results = []
+        for rs in product:
+            product_json = {}
+            product_json = rs.title
+            results.append(product_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
