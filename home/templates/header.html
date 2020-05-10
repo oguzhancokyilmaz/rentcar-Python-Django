@@ -55,7 +55,7 @@
                                  <div id="cate-toggle" class="category-menu-list">
                                     <ul>
                                      {% load mptt_tags %}
-
+                                             {% csrf_token %}
                                         {% recursetree category %}
                                            <li class="right-menu"><a href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title }}</a>
                                             <ul class="cat-mega-menu">
@@ -90,9 +90,9 @@
                                     <ul class="dropdown">
 
                                         {% if user.id is not None %}
+                                             {% csrf_token %}
 
-
-                                        <li><a href="#">Hesabım</a></li>
+                                        <li><a href="/user">Hesabım</a></li>
                                         <li><a href="#">Sepetim</a></li>
                                         <li><a href="/logout/">Çıkış Yap</a></li>
                                          {% else %}
