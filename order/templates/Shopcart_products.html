@@ -1,0 +1,108 @@
+{% extends "homebase.html" %}
+ {% load static %}
+
+{% block title %} Sepetim-{{ setting.company }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %} <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area" style="background-image: url({% static 'img/1.jpg'%});">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>SEPETİM</h2>
+                    <ul>
+                        <li><a href="/">ANASAYFA</a></li>
+                        <li class="active">Sepetim</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <!-- Begin Uren's Cart Area -->
+        <div class="uren-cart-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                    {% if messages %}
+                                       {% for message in messages %}
+                                           <div class="alert alert-{{ message.tags }}" role="alert"> {{ message }} </div>
+                                       {% endfor %}
+                                    {% endif %}
+                        <form action="javascript:void(0)">
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="uren-product-remove">remove</th>
+                                            <th class="uren-product-thumbnail">RESİM</th>
+                                            <th class="cart-product-name">ARABA</th>
+                                            <th class="uren-product-price">GÜNLÜK FİYAT</th>
+                                            <th class="uren-product-quantity">GÜN</th>
+                                            <th class="uren-product-subtotal">TOPLAM</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {% for rs in schopcart %}
+
+
+
+
+                                        <tr>
+                                            <td class="uren-product-remove"><a href="/order/deletefromcart/{{ rs.id }}" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"
+                                                title="Remove"></i></a></td>
+                                            <td class="uren-product-thumbnail"><a><img src="{{rs.product.image.url}}"  style="height: 200px ; width: 200px" alt="Uren's Cart Thumbnail"></a></td>
+                                            <td class="uren-product-name"><a >{{rs.product}}</a></td>
+                                            <td class="uren-product-price"><span class="amount">${{rs.product.price}}</span></td>
+                                            <td class="quantity">
+                                                <label>ADET</label>
+                                                <div class="">
+                                                    {{rs.quantity}}
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal"><span class="amount">${{ rs.amount }}</span></td>
+                                        </tr>
+
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="coupon-all">
+                                        <div class="coupon">
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
+                                            <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+                                        </div>
+                                        <div class="coupon2">
+                                            <input class="button" name="update_cart" value="Update cart" type="submit">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 ml-auto">
+                                    <div class="cart-page-total">
+                                        <h2>Sepet Tutarı</h2>
+                                        <ul>
+                                            <li>Ara Toplam <span>${{ total }}</span></li>
+                                            <li>TOPLAM <span>${{ total }}</span></li>
+                                        </ul>
+                                        <a href="javascript:void(0)">Proceed to checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Cart Area End Here -->
+
+{% endblock %}

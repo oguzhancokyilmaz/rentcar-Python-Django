@@ -22,14 +22,14 @@
                                 <a href="#"><i class="fab fa-tripadvisor"></i></a>
                                 <a href="https://www.instagram.com/oguzhancokyilmaz"><i class="fab fa-instagram"></i></a>
                             </div>
-                            <a href="#" class="bk-btn">Araç Kirala</a>
+                             <a class="nav-right search-switch">ARAMA YAP
+                                <i class="icon_search"></i>
+                            </a>
                             <div class="language-option">
                                 <img src="{% static 'img/flag.png'%}" alt="">
                                 <span>TR <i class="fa fa-angle-down"></i></span>
                                 <div class="flag-dropdown">
-                                    <ul>
 
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -78,9 +78,11 @@
                                 </div>
                             </div>
                         </div>
+
+
                     <div class="col-lg-9">
-                        <div class="nav-menu">
-                            <nav class="mainmenu">
+                        <div class="nav-menu" >
+                            <nav class="mainmenu" >
                                 <ul>
                                     <li class="active"><a href="/">Anasayfa</a></li>
                                     <li><a href="/hakkimizda">Hakkımızda</a></li>
@@ -103,12 +105,73 @@
 
                                     </ul>
                                     </li>
-                                    <!--<li><a href="./contact.html">Contact</a></li> -->
+                                  <li>
+
+                            <div class="">
+                                <ul >
+
+                                    <li class="minicart-wrap">
+                                        <a href="#miniCart" class="minicart-btn toolbar-btn">
+                                            <div class="minicart-count_area">
+
+
+                                            </div>
+                                            <div class="minicart-front_text">
+                                                <span class="fa fa-shopping-cart"> SEPET ({{adeturun}})</span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="offcanvas-minicart_wrapper" id="miniCart">
+                <div class="offcanvas-menu-inner">
+                    <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
+                    <div class="minicart-content">
+                        <div class="minicart-heading">
+                            <h4>SEPETİM</h4>
+                        </div>
+                        <ul class="minicart-list">
+
+                            {% for rs in schopcart %}
+
+                            <li class="minicart-product">
+                                <a class="product-item_remove" href="/deletefromcarthome/{{ rs.id }}"><i
+                                    class="ion-android-close"></i></a>
+
+                                     <div class="product-item_img">
+                                    <img src="{{rs.product.image.url}}" alt="Uren's Product Image">
+                                </div>
+                                <div class="product-item_content">
+                                    <a class="product-item_title">{{rs.product}}</a>
+                                    <span class="product-item_quantity">{{ rs.quantity }}*{{rs.price}} $</span>
+                                </div>
+                            </li>
+                            {% endfor %}
+
+
+
+                        </ul>
+                    </div>
+                    <div class="minicart-item_total">
+                        <span>TOPLAM</span>
+                        <span class="ammount">${{total}}</span>
+                    </div>
+                    <div class="minicart-btn_area">
+                        <a href="/shopcart/" class="uren-btn uren-btn_dark uren-btn_fullwidth">Minicart</a>
+                    </div>
+                    <div class="minicart-btn_area">
+                        <a href="checkout.html" class="uren-btn uren-btn_dark uren-btn_fullwidth">Checkout</a>
+                    </div>
+                </div>
+            </div></li>
                                 </ul>
                             </nav>
-                            <div class="nav-right search-switch">
-                                <i class="icon_search"></i>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -133,6 +196,16 @@
         </div>
     </div>
     <!-- Search model end -->
+
+
+
+
+
+
+
+
+
+
 
     </header>
     <!-- Header End -->

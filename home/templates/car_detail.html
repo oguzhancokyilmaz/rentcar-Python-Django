@@ -143,13 +143,47 @@
                                         <li>Kalan Adet : <a >{{ car.amount }}</a></li>
                                     </ul>
                                 </div>
+                                    <div class="col-lg-5" style="margin-left: 250px ; margin-top: -250px">
+                    <div class="room-booking">
+                        {% if messages %}
+                                       {% for message in messages %}
+                                           <div class="alert alert-{{ message.tags }}" role="alert"> {{ message }} </div>
+                                       {% endfor %}
+                                    {% endif %}
+                        <h3 style="color: #969696 ">ARAÇ KİRALA</h3>
+                        <form action="/order/addtocart/{{ car.id }}" method="post">
+                             {% csrf_token %}
 
+                            <div class="check-date">
+                                <label for="date-in">Check In:</label>
+                                <input type="text" class="date-input" id="date-in">
+                                <i class="icon_calendar"></i>
+                            </div>
+                            <div class="check-date">
+                                <label for="date-out">Check Out:</label>
+                                <input type="text" class="date-input" id="date-out">
+                                <i class="icon_calendar"></i>
+                            </div>
+                            <div class="quantity">
+                                    <label>Quantity</label>
+                                    <div class="cart-plus-minus">
+                                        <input  name="quantity" class="cart-plus-minus-box" type="number" min="0" max="{{ car.amount }}" value="1" >
 
+                                    </div>
+                                </div>
                                 <div class="qty-btn_area">
                                     <ul>
-                                        <li><a class="qty-cart_btn" href="cart.html">SEPETE EKLE</a></li>
+                                        <li><button class="qty-cart_btn" href="cart.html">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp; SEPETE EKLE &nbsp; </button></li>
+
                                     </ul>
                                 </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
                                 <div class="uren-tag-line">
                                     <h6>Tags:</h6>
                                     <a >{{car.keywords}}</a>

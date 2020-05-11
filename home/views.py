@@ -1,5 +1,5 @@
 import json
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
 from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect
@@ -11,6 +11,7 @@ from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormMessage, ContactFormu
 from django.contrib import messages
 
+from order.models import ShopCart
 from product.models import Category, Cars, Images, Comment
 
 
@@ -19,25 +20,57 @@ def index(request):
     category = Category.objects.all()
     lastproducts = Cars.objects.all().order_by('?')[:4]
     comments = Comment.objects.filter(status='True').order_by('?')
+    current_user = request.user
+    schopcart = ShopCart.objects.filter(user_id=current_user.id)
+    total = 0
+    adeturun = 0
+    for rs in schopcart:
+        total += rs.product.price * rs.quantity
+        adeturun += rs.quantity
+
+
     context = {'setting': setting,
                'category': category,
                'lastproducts': lastproducts,
-               'comments': comments ,
+               'schopcart': schopcart ,
+               'total': total,
+               'adeturun': adeturun,
+               'comments': comments,
                'page': 'home'}
     return render(request, 'index.html', context)
 
 
 def hakkimizda(request):
 
+    current_user = request.user
+    schopcart = ShopCart.objects.filter(user_id=current_user.id)
+    total = 0
+    adeturun = 0
+    for rs in schopcart:
+        total += rs.product.price * rs.quantity
+        adeturun += rs.quantity
+
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
-    context = {'setting': setting,'page':'hakkimizda','category': category}
+    context = {'setting': setting,'page':'hakkimizda','category': category,'schopcart': schopcart ,
+               'total': total,
+               'adeturun': adeturun,}
     return render(request, 'hakkimizda.html', context)
 
 def referanslar(request):
+    current_user = request.user
+    schopcart = ShopCart.objects.filter(user_id=current_user.id)
+    total = 0
+    adeturun = 0
+    for rs in schopcart:
+        total += rs.product.price * rs.quantity
+        adeturun += rs.quantity
+
     category = Category.objects.all()
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting,'page':'referanslar','category':category}
+    context = {'setting': setting,'page':'referanslar','category':category,'schopcart': schopcart ,
+               'total': total,
+               'adeturun': adeturun,}
     return render(request, 'referanslarimiz.html', context)
 
 def slider(request):
@@ -60,25 +93,54 @@ def iletisim(request):
             messages.success(request,"Mesajiniz Gönderilmistir.")
             return HttpResponseRedirect('/iletisim')
 
+    current_user = request.user
+    schopcart = ShopCart.objects.filter(user_id=current_user.id)
+    total = 0
+    adeturun = 0
+    for rs in schopcart:
+        total += rs.product.price * rs.quantity
+        adeturun += rs.quantity
+
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     form = ContactFormu()
-    context = {'setting': setting,'form':form,'category':category}
+    context = {'setting': setting,'form':form,'category':category,'schopcart': schopcart ,
+               'total': total,
+               'adeturun': adeturun,}
     return render(request, 'iletisim.html', context)
 
 
 def category_cars(request,id,slug):
 
+    current_user = request.user
+    schopcart = ShopCart.objects.filter(user_id=current_user.id)
+    total = 0
+    adeturun = 0
+    for rs in schopcart:
+        total += rs.product.price * rs.quantity
+        adeturun += rs.quantity
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
     products = Cars.objects.filter(category_id=id)
     context = {'cars': products,
                'categorydata':categorydata,
-               'category': category}
+               'category': category,
+               'schopcart': schopcart,
+               'total': total,
+               'adeturun': adeturun,
+               }
     return render(request,'arabalar.html',context)
 
 
 def car_detail (request,id,slug):
+    current_user = request.user
+    schopcart = ShopCart.objects.filter(user_id=current_user.id)
+    total = 0
+    adeturun = 0
+    for rs in schopcart:
+        total += rs.product.price * rs.quantity
+        adeturun += rs.quantity
+
     category = Category.objects.all()
     car = Cars.objects.get(pk=id)
     images = Images.objects.filter(car_id=id)
@@ -86,19 +148,35 @@ def car_detail (request,id,slug):
     context = {'car': car,
                'images': images,
                'category': category,
-               'comments': comments}
+               'comments': comments,
+               'schopcart': schopcart,
+               'total': total,
+               'adeturun': adeturun,
+               }
     return render(request,'car_detail.html',context)
 
 def product_search(request):
     if request.method =='POST':
         form = SearchForm(request.POST)
         if form.is_valid():
+
+            current_user = request.user
+            schopcart = ShopCart.objects.filter(user_id=current_user.id)
+            total = 0
+            adeturun = 0
+            for rs in schopcart:
+                total += rs.product.price * rs.quantity
+                adeturun += rs.quantity
+
             category = Category.objects.all()
             query = form.cleaned_data['query'] #formdan bilgiyi al
             products = Cars.objects.filter(title__icontains=query) #arabalardan titleında query olanları al
             context = {'products':products,
                        'category':category,
-                       'query':query
+                       'query':query,
+                       'schopcart': schopcart,
+                       'total': total,
+                       'adeturun': adeturun,
                        }
             return render(request,'products_search.html',context)
 
@@ -162,3 +240,9 @@ def signup_view(request):
                'form': form,
                }
     return render(request, 'signup.html', context)
+
+@login_required(login_url='/login')
+def deletefromcarthome(request,id):
+    ShopCart.objects.filter(id=id).delete()
+    messages.success(request,"Ürün Sepetten Silinmiştir.")
+    return HttpResponseRedirect("/")
