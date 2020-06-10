@@ -23,10 +23,10 @@ def index(request):
     current_user = request.user
     schopcart = ShopCart.objects.filter(user_id=current_user.id)
     total = 0
-    adeturun = 0
+    request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()
     for rs in schopcart:
         total += rs.product.price * rs.quantity
-        adeturun += rs.quantity
+
 
 
     context = {'setting': setting,
@@ -34,7 +34,7 @@ def index(request):
                'lastproducts': lastproducts,
                'schopcart': schopcart ,
                'total': total,
-               'adeturun': adeturun,
+
                'comments': comments,
                'page': 'home'}
     return render(request, 'index.html', context)
@@ -45,32 +45,32 @@ def hakkimizda(request):
     current_user = request.user
     schopcart = ShopCart.objects.filter(user_id=current_user.id)
     total = 0
-    adeturun = 0
+
     for rs in schopcart:
         total += rs.product.price * rs.quantity
-        adeturun += rs.quantity
+
 
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     context = {'setting': setting,'page':'hakkimizda','category': category,'schopcart': schopcart ,
                'total': total,
-               'adeturun': adeturun,}
+               }
     return render(request, 'hakkimizda.html', context)
 
 def referanslar(request):
     current_user = request.user
     schopcart = ShopCart.objects.filter(user_id=current_user.id)
     total = 0
-    adeturun = 0
+
     for rs in schopcart:
         total += rs.product.price * rs.quantity
-        adeturun += rs.quantity
+
 
     category = Category.objects.all()
     setting = Setting.objects.get(pk=1)
     context = {'setting': setting,'page':'referanslar','category':category,'schopcart': schopcart ,
                'total': total,
-               'adeturun': adeturun,}
+               }
     return render(request, 'referanslarimiz.html', context)
 
 def slider(request):
@@ -99,14 +99,14 @@ def iletisim(request):
     adeturun = 0
     for rs in schopcart:
         total += rs.product.price * rs.quantity
-        adeturun += rs.quantity
+
 
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     form = ContactFormu()
     context = {'setting': setting,'form':form,'category':category,'schopcart': schopcart ,
                'total': total,
-               'adeturun': adeturun,}
+               }
     return render(request, 'iletisim.html', context)
 
 
@@ -127,7 +127,6 @@ def category_cars(request,id,slug):
                'category': category,
                'schopcart': schopcart,
                'total': total,
-               'adeturun': adeturun,
                }
     return render(request,'arabalar.html',context)
 
@@ -136,10 +135,10 @@ def car_detail (request,id,slug):
     current_user = request.user
     schopcart = ShopCart.objects.filter(user_id=current_user.id)
     total = 0
-    adeturun = 0
+
     for rs in schopcart:
         total += rs.product.price * rs.quantity
-        adeturun += rs.quantity
+
 
     category = Category.objects.all()
     car = Cars.objects.get(pk=id)
@@ -151,7 +150,7 @@ def car_detail (request,id,slug):
                'comments': comments,
                'schopcart': schopcart,
                'total': total,
-               'adeturun': adeturun,
+
                }
     return render(request,'car_detail.html',context)
 

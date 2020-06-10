@@ -1,0 +1,294 @@
+{% extends "homebase.html" %}
+ {% load static %}
+
+{% block title %} Sepetim-{{ setting.company }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %} <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+
+
+             <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area" style="background-image: url({% static 'img/1.jpg'%});">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>SİPARİŞ</h2>
+                    <ul>
+                        <li><a href="/">ANASAYFA</a></li>
+                        <li class="active">ÖDEME</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <!-- Begin Uren's Checkout Area -->
+        <div class="checkout-area">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="checkbox-form">
+                                <h3>SİPARİŞ DETAYI</h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="country-select clearfix">
+                                            <label>ÜLKE <span class="required">*</span></label>
+                                            <select class="myniceselect nice-select wide">
+                                                <option data-display="TÜRKİYE">TÜRKİYE</option>
+                                                <option value="uk">London</option>
+                                                <option value="rou">Romania</option>
+                                                <option value="fr">French</option>
+                                                <option value="de">Germany</option>
+                                                <option value="aus">Australia</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>AD <span class="required">*</span></label>
+                                            <input value="{{ user.first_name }}" type="text" name="first_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>SOYAD <span class="required">*</span></label>
+                                            <input value="{{ profile.user.last_name }}" type="text" name="last_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="checkout-form-list">
+                                            <label>ADRES <span class="required">*</span></label>
+                                            <input value="{{ profile.address }}" type="text" name="address">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="checkout-form-list">
+                                            <label>ŞEHİR <span class="required">*</span></label>
+                                            <input value="{{ profile.city }}" type="text" name="city">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>POSTA KODU <span class="required">*</span></label>
+                                            <input placeholder="" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>Email Adresi <span class="required">*</span></label>
+                                            <input value="{{ profile.user.email }}" type="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>TELEFON <span class="required">*</span></label>
+                                            <input value="{{ profile.phone }}" name="phone">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="your-order">
+                            <h3>ÖDEME DETAYI</h3>
+                            <div class="your-order-table table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="cart-product-name">ÜRÜN</th>
+                                            <th class="cart-product-total">TOPLAM</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for rs in schopcart %}
+
+
+
+                                        <tr class="cart_item">
+                                            <td class="cart-product-name"><img src="{{rs.product.image.url}}" style="max-width: 150px;
+                                                        height: auto;"> {{rs.product}}<strong class="product-quantity">
+                                            </strong></td>
+                                            <td class="cart-product-total"><span class="amount" style="margin-left: 115px">${{ rs.price }}</span></td>
+                                        </tr>
+
+                                    {% endfor %}
+
+                                    </tbody>
+                                    <tfoot>
+
+                                        <tr class="order-total">
+                                            <th>TOPLAM</th>
+                                            <td><strong><span class="amount" style="margin-left: 100px">$ {{ total }}</span></strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-accordion">
+                                    <div id="accordion">
+                                        <div class="card">
+                                            <div class="card-header" id="#payment-1">
+                                                <h5 class="panel-title">
+                                                    <a href="javascript:void(0)" class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        Direct Bank Transfer.
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                                <div class="card-body">
+
+                            <div class="checkbox-form">
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="checkout-form-list">
+                                            <label>KART NUMARASI <span class="required">*</span></label>
+                                            <input placeholder="Kartınızın üstündeki numara" type="text" name="number">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="checkout-form-list">
+                                            <label>KART ÜZERİNDEKİ İSİM <span class="required">*</span></label>
+                                            <input placeholder="Kartınızın üstündeki isim" type="text" name="holder">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>SON KULLANIM <span class="required">*</span></label>
+                                            <input placeholder="KARTINIZIN SON KULLANMA TARİHİ" type="text" name="ecpdate">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>CVV <span class="required">*</span></label>
+                                            <input placeholder="CVV KODUNUZ"  type="text" name="secnumber">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="#payment-2">
+                                                <h5 class="panel-title">
+                                                    <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        Cheque Payment
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                                <div class="card-body">
+
+                            <div class="checkbox-form">
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <div class="checkout-form-list">
+                                            <label>KART ÜZERİNDEKİ İSİM <span class="required">*</span></label>
+                                            <input placeholder="Kartınızın üstündeki isim" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>SON KULLANIM <span class="required">*</span></label>
+                                            <input placeholder="KARTINIZIN SON KULLANMA TARİHİ" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>CVV <span class="required">*</span></label>
+                                            <input placeholder="CVV KODUNUZ"  type="text">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="#payment-3">
+                                                <h5 class="panel-title">
+                                                    <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                        PayPal
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                                <div class="card-body">
+
+                            <div class="checkbox-form">
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <div class="checkout-form-list">
+                                            <label>KART ÜZERİNDEKİ İSİM <span class="required">*</span></label>
+                                            <input placeholder="Kartınızın üstündeki isim" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>SON KULLANIM <span class="required">*</span></label>
+                                            <input placeholder="KARTINIZIN SON KULLANMA TARİHİ" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkout-form-list">
+                                            <label>CVV <span class="required">*</span></label>
+                                            <input placeholder="CVV KODUNUZ"  type="text">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="order-button-payment">
+                                        <input value="ÖDEMEYİ ONAYLA" type="submit" >
+                                    </div>
+                                     </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Checkout Area End Here -->
+
+{% endblock %}

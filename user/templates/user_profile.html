@@ -45,6 +45,9 @@
                                     <a class="nav-link" id="account-details-tab" data-toggle="tab" href="#account-details" role="tab" aria-controls="account-details" aria-selected="false">HESAP AYARI</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" id="account-address-tab" data-toggle="tab" href="#account-password" role="tab" aria-controls="account-address" aria-selected="false">ŞİFRE İŞLEMLERİ</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" id="account-logout-tab" href="login-register.html" role="tab" aria-selected="false">ÇIKIŞ</a>
                                 </li>
                             </ul>
@@ -53,7 +56,7 @@
                             <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
                                 <li>
                                         <div class="author-avatar">
-                                            <img style="height: 100px ; width: 100px ; margin-top: -30px" src="{{ profile.image.url }}" alt="User">
+                                            <img style="height: 100px ; width: 100px ; margin-top: -30px" src="{{ user.userprofile.image.url }}" alt="User">
                                         </div><br>
                                         <div class="comment-body">
                                             <h5 class="comment-author">{{profile.user_name}}</h5>
@@ -116,39 +119,29 @@
                                 </div>
                                 <div class="tab-pane fade" id="account-details" role="tabpanel" aria-labelledby="account-details-tab">
                                     <div class="myaccount-details">
-                                        <form action="#" class="uren-form">
+
                                             <div class="uren-form-inner">
-                                                <div class="single-input single-input-half">
-                                                    <label for="account-details-firstname">First Name*</label>
-                                                    <input type="text" id="account-details-firstname" placeholder="{{ profile.user.first_name }}">
-                                                </div>
-                                                <div class="single-input single-input-half">
-                                                    <label for="account-details-lastname">Last Name*</label>
-                                                    <input type="text" id="account-details-lastname"placeholder="{{ profile.user.last_name }}">
-                                                </div>
+
+
                                                 <div class="single-input">
-                                                    <label for="account-details-email">Email*</label>
-                                                    <input type="email" id="account-details-email" placeholder="{{ profile.user.email }}">
+                                                   <a href="/user/update"> <button class="uren-btn uren-btn_dark"  type="submit"><span>DEĞİŞTİR</span></button> </a>
                                                 </div>
+
+                                            </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="account-password" role="tabpanel" aria-labelledby="account-details-tab">
+                                    <div class="myaccount-details">
+
+                                            <div class="uren-form-inner">
+
+
                                                 <div class="single-input">
-                                                    <label for="account-details-oldpass">Current Password(leave blank to leave
-                                                        unchanged)</label>
-                                                    <input type="password" id="account-details-oldpass">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="account-details-newpass">New Password (leave blank to leave
-                                                        unchanged)</label>
-                                                    <input type="password" id="account-details-newpass">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="account-details-confpass">Confirm New Password</label>
-                                                    <input type="password" id="account-details-confpass">
-                                                </div>
-                                                <div class="single-input">
-                                                    <button class="uren-btn uren-btn_dark" type="submit"><span>KAYDET</span></button>
+                                                    <a href="/user/password">  <button class="uren-btn uren-btn_dark" type="submit"><span>ŞİFRE DEĞİŞTİR</span></button></a>
                                                 </div>
                                             </div>
-                                        </form>
+
                                     </div>
                                 </div>
                             </div>

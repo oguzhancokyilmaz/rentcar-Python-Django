@@ -117,7 +117,7 @@
 
                                             </div>
                                             <div class="minicart-front_text">
-                                                <span class="fa fa-shopping-cart"> SEPET ({{adeturun}})</span>
+                                                <span class="fa fa-shopping-cart"> SEPET ({{request.session.cart_items}})</span>
                                             </div>
                                         </a>
                                     </li>
@@ -162,10 +162,10 @@
                         <span class="ammount">${{total}}</span>
                     </div>
                     <div class="minicart-btn_area">
-                        <a href="/shopcart/" class="uren-btn uren-btn_dark uren-btn_fullwidth">Minicart</a>
+                        <a href="/shopcart/" class="uren-btn uren-btn_dark uren-btn_fullwidth">SEPETİM</a>
                     </div>
                     <div class="minicart-btn_area">
-                        <a href="checkout.html" class="uren-btn uren-btn_dark uren-btn_fullwidth">Checkout</a>
+                        <a href="/order/orderproduct" class="uren-btn uren-btn_dark uren-btn_fullwidth">ÖDEME YAP</a>
                     </div>
                 </div>
             </div></li>

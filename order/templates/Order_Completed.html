@@ -1,0 +1,45 @@
+{% extends "homebase.html" %}
+ {% load static %}
+
+{% block title %} Sepetim-{{ setting.company }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %} <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area" style="background-image: url({% static 'img/1.jpg'%});">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>KİRA ONAY</h2>
+                    <ul>
+                        <li><a href="/">ANASAYFA</a></li>
+                        <li class="active">ONAY</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+
+    <div class="error404-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 ml-auto mr-auto text-center">
+                        <div class="search-error-wrapper">
+                            <h1>{{ordercode}}</h1>
+                            <h2>SİPARİŞ KODUNUZ</h2>
+                            <p class="short_desc">{{ user.first_name }} {{ user.last_name }} rezervasyonunuz başarı ile tamamlanmıştır!</p>
+
+                            <div class="uren-btn-ps_center"></div><br>
+                            <a href="/" class="uren-error_btn">ANASAYFA</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
