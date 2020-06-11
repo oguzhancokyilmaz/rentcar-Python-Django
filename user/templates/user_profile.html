@@ -39,7 +39,7 @@
                                     <a class="nav-link" id="account-orders-tab" data-toggle="tab" href="#account-orders" role="tab" aria-controls="account-orders" aria-selected="false">ŞİPARİŞLER</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="account-address-tab" data-toggle="tab" href="#account-address" role="tab" aria-controls="account-address" aria-selected="false">YORUMLAR</a>
+                                    <a class="nav-link" id="account-address-tab" data-toggle="tab" href="#account-address" role="tab" aria-controls="account-address" aria-selected="false">YORUMLARIM</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="account-details-tab" data-toggle="tab" href="#account-details" role="tab" aria-controls="account-details" aria-selected="false">HESAP AYARI</a>
@@ -102,21 +102,39 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-address" role="tabpanel" aria-labelledby="account-address-tab">
-                                    <div class="myaccount-address">
-                                        <p style="color: lawngreen">Fatura ve sipariş adresini görüntülüyorsun.</p>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h4 class="small-title">FATURA ADRESİ</h4>
-                                                <address>
-                                                    {{profile.address}}
-                                                </address>
-                                            </div>
-                                            <div class="col">
-                                                <h4 class="small-title">EV ADRESİ</h4>
-                                                <address>
-                                                    {{profile.address}}
-                                                </address>
-                                            </div>
+                                    <div class="myaccount-orders">
+                                        <h4 class="small-title">YORUMLARIM</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover">
+                                                <tbody>
+                                                    <tr>
+
+                                                        <th>ARAÇ</th>
+                                                        <th>KONU</th>
+                                                        <th>YORUM</th>
+                                                        <th>RATE</th>
+                                                        <th>STATUS</th>
+                                                        <th>SİL</th>
+                                                    </tr>
+
+                                                {% for rs in comments %}
+
+
+                                                    <tr>
+
+                                                        <td><a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}"><strong>{{ rs.product.title }}</strong></a></td>
+                                                        <td>{{ rs.subject }}</td>
+                                                        <td>{{rs.comment}}</td>
+                                                        <td>{{rs.rate}}<i class="icon_star"></i> </td>
+                                                        <td><a  class="uren-btn uren-btn_dark uren-btn_sm"><span>{{ rs.status }}</span></a>
+                                                    <td class="uren-product-remove"><a href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Yorum silinsin mi?')"><i class="fa fa-trash"
+                                                title="Sil"></i></a></td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

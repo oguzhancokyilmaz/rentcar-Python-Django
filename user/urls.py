@@ -9,6 +9,7 @@ urlpatterns = [
     path('password/', views.change_password, name='change_password'),
     path('orders/', views.orders, name='orders'),
     path('orderdetail/<int:id>', views.orderdetail, name='orderdetail'),
+    path('deletecomment/<int:id>', views.deletecomment, name='deletecomment'),
    # path('addcomment/<int:id>', views.addcomment, name='addcomment'),
     # ex: /polls/5/
     #path('<int:question_id>/', views.detail, name='detail'),
