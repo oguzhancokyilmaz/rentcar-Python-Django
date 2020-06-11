@@ -80,7 +80,6 @@ class UserProfile(models.Model):
     address = models.CharField(blank=True, max_length=250)
     city = models.CharField(blank=True, max_length=30)
     country = models.CharField(blank=True, max_length=30)
-    kimliknum = models.IntegerField(blank=True)
     image = models.ImageField(blank=True, upload_to="images/users/")
 
     def __str__(self):
@@ -97,4 +96,4 @@ class UserProfile(models.Model):
 class UserProfileFormu(ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['phone', 'address', 'city', 'country','kimliknum','image']
+        fields = ['phone', 'address', 'city', 'country','image']
