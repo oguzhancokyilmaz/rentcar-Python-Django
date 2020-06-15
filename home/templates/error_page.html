@@ -1,0 +1,51 @@
+{% extends "homebase.html" %}
+ {% load static %}
+
+{% block title %} Hakkımızda-{{ setting.company }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %} <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+<!-- Breadcrumb Section Begin -->
+
+    <div class="breadcrumb-section" style="background-image: url({% static 'img/1.jpg'%});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2 style="color: white">HATA</h2>
+                        <div class="bt-option">
+                            <a href="/" style="color: white">Anasayfa</a>
+                            <span style="color: white">HATA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+
+    <!-- About Us Page Section Begin -->
+    <div class="error404-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 ml-auto mr-auto text-center">
+                        <div class="search-error-wrapper">
+                            <h1>404</h1>
+                            <h2>SAYFA BULUNAMADI</h2>
+                            <p class="short_desc">Özür dileriz , aradığınız sayfa bulunamıyor. Silinmiş veya ismi değiştirilmiş
+                                 olabilir.</p>
+
+                            <div class="uren-btn-ps_center"></div> <br>
+                            <a href="/" class="uren-error_btn">ANASAYFAYA GİT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

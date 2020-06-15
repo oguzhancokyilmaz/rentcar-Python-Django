@@ -7,6 +7,7 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from content.models import Menu, Content, CImages
 from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile
 from django.contrib import messages
@@ -18,12 +19,15 @@ from product.models import Category, Cars, Images, Comment
 def index(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
+    menu = Menu.objects.all()
     lastproducts = Cars.objects.all().order_by('?')[:4]
     comments = Comment.objects.filter(status='True').order_by('?')
     current_user = request.user
     schopcart = ShopCart.objects.filter(user_id=current_user.id)
     total = 0
     request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()
+    news= Content.objects.filter(type='haber').order_by('-id')[:4]
+    announcements = Content.objects.filter(type='duyuru').order_by('-id')[:4]
     for rs in schopcart:
         total += rs.product.price * rs.quantity
 
@@ -34,8 +38,10 @@ def index(request):
                'lastproducts': lastproducts,
                'schopcart': schopcart ,
                'total': total,
-
+               'menu': menu,
                'comments': comments,
+               'news': news,
+               'announcements': announcements,
                'page': 'home'}
     return render(request, 'index.html', context)
 
@@ -251,3 +257,46 @@ def deletefromcarthome(request,id):
     ShopCart.objects.filter(id=id).delete()
     messages.success(request,"Ürün Sepetten Silinmiştir.")
     return HttpResponseRedirect("/")
+
+
+def menu(request,id):
+    try:
+        content = Content.objects.get(menu_id=id)
+        link = '/content/' + str(content.id) + '/menu'
+        return HttpResponseRedirect(link)
+    except:
+        messages.warning(request,"Hata ! İlgili içerik bulunamadı")
+        link = '/error'
+        return HttpResponseRedirect(link)
+
+
+def contentdetail (request,id,slug):
+    category = Category.objects.all()
+    menu = Menu.objects.all()
+    try:
+        content = Content.objects.get(pk=id)
+        images = CImages.objects.filter(content_id=id)
+        context = {'menu': menu,
+                   'images': images,
+                   'category': category,
+                   'content': content,
+
+
+                   }
+        return render(request,'content_detail.html',context)
+
+    except:
+        messages.warning(request,"Hata ! İlgili içerik bulunamadı")
+        link = '/error'
+        return HttpResponseRedirect(link)
+
+
+def error(request):
+    category = Category.objects.all()
+    menu = Menu.objects.all()
+
+    context = {'menu': menu,
+               'category': category,
+
+               }
+    return render(request, 'error_page.html', context)

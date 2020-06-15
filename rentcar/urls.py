@@ -28,8 +28,11 @@ urlpatterns = [
     path('product/', include('product.urls')),
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
+    path('menu/<int:id>', views.menu , name='menu'),
+    path('error/', views.error , name='error'),
+    path('content/<int:id>/<slug:slug>/', views.contentdetail , name='contentdetail'),
     path('order/', include('order.urls')),
-
+    path('content/', include('content.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('hakkimizda/', views.hakkimizda, name='hakkimizda'),
     path('referanslar/', views.referanslar, name='referanslar'),
