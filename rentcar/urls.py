@@ -30,6 +30,8 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('menu/<int:id>', views.menu , name='menu'),
     path('error/', views.error , name='error'),
+    path('sss/', views.faq , name='faq'),
+    path('allcars/', views.allcars , name='allcars'),
     path('content/<int:id>/<slug:slug>/', views.contentdetail , name='contentdetail'),
     path('order/', include('order.urls')),
     path('content/', include('content.urls')),

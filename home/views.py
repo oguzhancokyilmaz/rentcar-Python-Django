@@ -9,7 +9,7 @@ from django.shortcuts import render
 # Create your views here.
 from content.models import Menu, Content, CImages
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile
+from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile, FAQ
 from django.contrib import messages
 
 from order.models import ShopCart
@@ -117,7 +117,7 @@ def iletisim(request):
 
 
 def category_cars(request,id,slug):
-
+    setting = Setting.objects.get(pk=1)
     current_user = request.user
     schopcart = ShopCart.objects.filter(user_id=current_user.id)
     total = 0
@@ -133,6 +133,7 @@ def category_cars(request,id,slug):
                'category': category,
                'schopcart': schopcart,
                'total': total,
+               'setting': setting,
                }
     return render(request,'arabalar.html',context)
 
@@ -145,7 +146,7 @@ def car_detail (request,id,slug):
     for rs in schopcart:
         total += rs.product.price * rs.quantity
 
-
+    setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     car = Cars.objects.get(pk=id)
     images = Images.objects.filter(car_id=id)
@@ -156,6 +157,7 @@ def car_detail (request,id,slug):
                'comments': comments,
                'schopcart': schopcart,
                'total': total,
+               'setting': setting,
 
                }
     return render(request,'car_detail.html',context)
@@ -273,6 +275,7 @@ def menu(request,id):
 def contentdetail (request,id,slug):
     category = Category.objects.all()
     menu = Menu.objects.all()
+    setting = Setting.objects.get(pk=1)
     try:
         content = Content.objects.get(pk=id)
         images = CImages.objects.filter(content_id=id)
@@ -280,6 +283,7 @@ def contentdetail (request,id,slug):
                    'images': images,
                    'category': category,
                    'content': content,
+                   'setting': setting,
 
 
                    }
@@ -294,9 +298,39 @@ def contentdetail (request,id,slug):
 def error(request):
     category = Category.objects.all()
     menu = Menu.objects.all()
-
+    setting = Setting.objects.get(pk=1)
     context = {'menu': menu,
                'category': category,
+               'setting': setting,
 
                }
     return render(request, 'error_page.html', context)
+
+
+def faq(request):
+    category = Category.objects.all()
+    menu = Menu.objects.all()
+    faq = FAQ.objects.all()
+    setting = Setting.objects.get(pk=1)
+    context = {'menu': menu,
+               'category': category,
+               'faq': faq,
+               'setting': setting,
+
+               }
+    return render(request, 'faq.html', context)
+
+
+def allcars(request):
+    category = Category.objects.all()
+    menu = Menu.objects.all()
+    cars = Cars.objects.all()
+    setting = Setting.objects.get(pk=1)
+    context = {'menu': menu,
+               'category': category,
+               'cars': cars,
+               'setting': setting,
+
+               }
+    return render(request, 'allcars.html', context)
+

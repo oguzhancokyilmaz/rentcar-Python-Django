@@ -4,13 +4,14 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from home.models import UserProfile
+from home.models import UserProfile, Setting
 from order.models import Order, OrderProduct
 from product.models import Category, Comment
 from user.forms import UserUpdateForm, ProfileUpdateForm
 
 
 def index(request):
+    setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     current_user = request.user
     comments = Comment.objects.filter(user_id = current_user.id)
@@ -20,6 +21,7 @@ def index(request):
                'profile': profile,
                'orders': orders,
                'comments': comments,
+               'setting': setting,
 
                }
 

@@ -1,0 +1,79 @@
+{% extends "homebase.html" %}
+ {% load static %}
+
+{% block title %} SSS-{{ setting.company }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %} <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+
+{% block content %}
+<!-- Breadcrumb Section Begin -->
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>SIKÇA SORULAN SORULAR</h2>
+                        <div class="bt-option">
+                            <a href="/">Anasayfa</a>
+                            <span>FAQ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Begin Uren's Frequently Area -->
+        <div class="frequently-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="frequently-content">
+                            <div class="frequently-desc">
+                                <h3>Yardım ve Destek</h3>
+                                <p>Araba kiralama yolculuğunuzun her aşamasında yanınızdayız.Sorunuzun cevabını bulmak için konulara göz atın veya arama yapın</p>
+                            </div>
+                        </div>
+                        <!-- Begin Frequently Accordin -->
+                        <div class="frequently-accordion">
+                            <div id="accordion">
+
+                             {% for rs in faq %}
+
+                                <div class="card">
+                                    <div class="card-header" id="headingSix">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                              <b>  {{rs.question}}</b>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                        <div class="card-body">
+                                            {{ rs.answer }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                        {% endfor %}
+
+
+
+
+
+                            </div>
+                        </div>
+                        <!--Frequently Accordin End Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Frequently Area End Here -->
+
+{% endblock %}

@@ -75,13 +75,13 @@
                                 "asNavFor": ".sp-img_slider-nav"
                                 }'>
                                     <div class="single-slide red zoom">
-                                        <img src="{{car.image.url}}" alt="Uren's Product Image">
+                                        <img src="{{car.image.url}}" alt="Uren's Product Image" style="height: 500px">
                                     </div>
 
                                     {% for rs in images %}
 
                                     <div class="single-slide orange zoom">
-                                        <img src="{{rs.image.url}}" alt="Uren's Product Image">
+                                        <img src="{{rs.image.url}}" alt="Uren's Product Image" style="height: 500px">
                                     </div>
 
                                     {% endfor %}
@@ -101,7 +101,7 @@
                                         {"breakpoint":575, "settings": {"slidesToShow": 2}}
                                     ]'>
                                     <div class="single-slide red zoom">
-                                        <img src="{{car.image.url}}" alt="Uren's Product Image">
+                                        <img src="{{car.image.url}}" alt="Uren's Product Image" style="height: 150px">
                                     </div>
                                     
 
@@ -109,7 +109,7 @@
                                     {% for rs in images %}
 
                                     <div class="single-slide orange">
-                                        <img src="{{rs.image.url}}" alt="Uren's Product Thumnail">
+                                        <img src="{{rs.image.url}}" alt="Uren's Product Thumnail" style="height: 150px">
                                     </div>
 
                                      {% endfor %}
@@ -156,12 +156,12 @@
 
                             <div class="check-date">
                                 <label for="date-in">Check In:</label>
-                                <input type="text" class="date-input" id="date-in">
+                                <input type="text" class="date-input" id="date-in" name="date-in">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="check-date">
                                 <label for="date-out">Check Out:</label>
-                                <input type="text" class="date-input" id="date-out">
+                                <input type="text" class="date-input" id="date-out" name="date-out">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="quantity">
